@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.config['DEBUG'] = True
 
 
-@app.route("/")
+@app.route("/login")
 def index():
     return render_template('index.html')
 
@@ -17,20 +17,20 @@ def response():
     verify = request.form['verify_password']
     
     if name == "":
-        name_error = "Please enter a username"
-        return render_template('index.html' password=word verify_password= verify name_error=name_error)
+        error = "Please enter a username"
+        username=''
+        return render_template('index.html', username=username, name_error=error)
 
     elif word == "":
-        word_error = "Please enter a password"
-        return render_template('index.html' password=word_error)
+        error = "Please enter a password"
+        return render_template('index.html', username=name, word_error=error)
 
-    elif verify == "":
-        verify_error = "Please verify password"
-        return render_template('index.html' verify_password=verify_error)
+    elif verify != word:
+        error = "The password does not match, please re-enter"
+        return render_template('index.html', username=name, password=word, verify_error=error)
 
     else:
         return render_template('welcome.html', username=name)
-
 
 
 app.run()
