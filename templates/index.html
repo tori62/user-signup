@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <form action="/welcome" method="POST">
 
     <p>
     <label for="name" >Username
-    
     <input id="name" type="text" name="username" value='{{username}}'/>
-    <class="error">{{name_error}}</class></label></p>
+    <span class="error">{{name_error}}</span></label></p>
 
     <p>
     <label>Password
     <input type="password" name="password" value='{{password}}' />
-    <class="error">{{word_error}}</class></label></p>
+    <span class="error">{{word_error}}</span></label></p>
 
     <p>
     <label>Verify Password    
     <input type="password" name="verify_password" value='{{verify_password}}'/>
-    <class="error">{{verify_error}}</class></label></p>
+    <span class="error">{{verify_error}}</span></label></p>
 
     <p>
     <label>Email (optional)
     <input type="text" name="email" value='{{email}}' />
-    <class="error">{{email_error}}</class></label></p>
+    <span class="error">{{email_error}}</span></label></p>
 
     <input type="submit" value="Submit" />
 </form>
